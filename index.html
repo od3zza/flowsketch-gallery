@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>EmotiSketch Gallery - Arte Emocional</title>
+  <meta name="description" content="Galeria de arte emocional criada através dos movimentos do mouse durante a navegação">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      line-height: 1.6;
+      color: #333;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      min-height: 100vh;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 20px;
+      background: rgba(255, 255, 255, 0.95);
+      border-radius: 20px;
+      margin-top: 20px;
+      margin-bottom: 20px;
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+      backdrop-filter: blur(10px);
+    }
+
+    .header {
+      text-align: center;
+      padding: 40px 20px;
+      border-bottom: 2px solid #f0f0f0;
+      margin-bottom: 40px;
+    }
+
+    .header h1 {
+      font-size: 3.5em;
+      margin-bottom: 20px;
+      background: linear-gradient(45deg, #667eea, #764ba2);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+
+    .header .subtitle {
+      font-size: 1.3em;
+      color: #666;
+      margin-bottom: 15px;
+      font-weight: 300;
+    }
+
+    .header .description {
+      font-size: 1.1em;
+      color: #777;
+      max-width: 800px;
+      margin: 0 auto;
+      line-height: 1.8;
+    }
+
+    .artwork {
+      background: #fff;
+      border-radius: 15px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+      margin-bottom: 60px;
+      overflow: hidden;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .artwork:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+    }
+
+    .artwork-image {
+      width: 100%;
+      text-align: center;
+      background: #f8f9fa;
+      padding: 30px;
+    }
+
+    .artwork img {
+      max-width: 100%;
+      max-height: 800px;
+      height: auto;
+      border-radius: 10px;
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+      transition: transform 0.3s ease;
+    }
+
+    .artwork img:hover {
+      transform: scale(1.02);
+    }
+
+    .artwork-info {
+      padding: 30px;
+      text-align: center;
+      background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%);
+    }
+
+    .artwork-title {
+      font-size: 2em;
+      font-weight: bold;
+      color: #333;
+      margin-bottom: 15px;
+      text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+    }
+
+    .artwork-artist {
+      font-size: 1.3em;
+      color: #667eea;
+      font-weight: 600;
+      margin-bottom: 10px;
+    }
+
+    .artwork-date {
+      font-size: 1.1em;
+      color: #999;
+      margin-bottom: 15px;
+      font-style: italic;
+    }
+
+    .artwork-stats {
+      display: inline-block;
+      background: linear-gradient(45deg, #667eea, #764ba2);
+      color: white;
+      padding: 8px 16px;
+      border-radius: 20px;
+      font-size: 0.9em;
+      font-weight: 500;
+      letter-spacing: 0.5px;
+    }
+
+    .no-artworks {
+      text-align: center;
+      padding: 80px 20px;
+      color: #666;
+    }
+
+    .no-artworks h2 {
+      font-size: 2em;
+      margin-bottom: 20px;
+      color: #999;
+    }
+
+    .no-artworks p {
+      font-size: 1.2em;
+      line-height: 1.6;
+    }
+
+    .loading {
+      text-align: center;
+      padding: 60px 20px;
+      color: #666;
+    }
+
+    .loading-spinner {
+      width: 50px;
+      height: 50px;
+      border: 4px solid #f0f0f0;
+      border-top: 4px solid #667eea;
+      border-radius: 50%;
+      animation: spin 1s linear infinite;
+      margin: 0 auto 20px;
+    }
+
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+
+    .footer {
+      text-align: center;
+      padding: 40px 20px;
+      border-top: 2px solid #f0f0f0;
+      margin-top: 40px;
+      color: #666;
+    }
+
+    .footer a {
+      color: #667eea;
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    .footer a:hover {
+      text-decoration: underline;
+    }
+
+    /* Responsive Design */
+    @media (max-width: 768px) {
+      .container {
+        margin: 10px;
+        padding: 15px;
+        border-radius: 15px;
+      }
+
+      .header h1 {
+        font-size: 2.5em;
+      }
+
+      .header .subtitle {
+        font-size: 1.1em;
+      }
+
+      .header .description {
+        font-size: 1em;
+      }
+
+      .artwork {
+        margin-bottom: 40px;
+      }
+
+      .artwork-image {
+        padding: 20px;
+      }
+
+      .artwork-info {
+        padding: 20px;
+      }
+
+      .artwork-title {
+        font-size: 1.6em;
+      }
+
+      .artwork-artist {
+        font-size: 1.1em;
+      }
+
+      .artwork-date {
+        font-size: 1em;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .header h1 {
+        font-size: 2em;
+      }
+
+      .artwork-title {
+        font-size: 1.4em;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <h1>🎨 EmotiSketch Gallery</h1>
+      <div class="subtitle">Arte Emocional Digital</div>
+      <div class="description">
+        Uma coleção única de arte criada através dos movimentos naturais do mouse durante a navegação.
+        Cada obra representa as emoções e sentimentos capturados em tempo real,
+        transformando gestos simples em expressões artísticas profundas.
+      </div>
+    </div>
+
+    <div id="gallery-content">
+      <div class="loading">
+        <div class="loading-spinner"></div>
+        <p>Carregando obras de arte...</p>
+      </div>
+    </div>
+
+    <div class="footer">
+      <p>
+        Criado com ❤️ pela extensão 
+        <a href="#" target="_blank">EmotiSketch</a>
+      </p>
+      <p>
+        <small>Cada movimento conta uma história única</small>
+      </p>
+    </div>
+  </div>
+
+  <script>
+    // Simulação de carregamento de obras
+    // Em produção, isso seria substituído por dados reais do GitHub
+    
+    const sampleArtworks = [
+      {
+        id: 1,
+        title: "Navegação Matinal",
+        artist: "Ana Silva",
+        date: "2024-01-15",
+        points: 1547,
+        image: "data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iODAwIiBoZWlnaHQ9IjYwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KICA8ZGVmcz4KICAgIDxsaW5lYXJHcmFkaWVudCBpZD0iZ3JhZDEiIHgxPSIwJSIgeTE9IjAlIiB4Mj0iMTAwJSIgeTI9IjEwMCUiPgogICAgICA8c3RvcCBvZmZzZXQ9IjAlIiBzdHlsZT0ic3RvcC1jb2xvcjojRkY2Nzk0O3N0b3Atb3BhY2l0eToxIiAvPgogICAgICA8c3RvcCBvZmZzZXQ9IjEwMCUiIHN0eWxlPSJzdG9wLWNvbG9yOiM2NjdlZWE7c3RvcC1vcGFjaXR5OjEiIC8+CiAgICA8L2xpbmVhckdyYWRpZW50PgogIDwvZGVmcz4KICA8cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSJ1cmwoI2dyYWQxKSIvPgogIDx0ZXh0IHg9IjQwMCIgeT0iMzAwIiBmb250LWZhbWlseT0iQXJpYWwiIGZvbnQtc2l6ZT0iMjQiIGZpbGw9IndoaXRlIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj5PYnJhIGRlIEV4ZW1wbG88L3RleHQ+Cjwvc3ZnPg=="
+      }
+    ];
+
+    function displayArtworks(artworks) {
+      const galleryContent = document.getElementById('gallery-content');
+      
+      if (artworks.length === 0) {
+        galleryContent.innerHTML = `
+          <div class="no-artworks">
+            <h2>🎨 Galeria em Construção</h2>
+            <p>
+              Esta galeria será preenchida automaticamente conforme os usuários
+              da extensão EmotiSketch enviarem suas obras de arte emocional.
+            </p>
+            <p>
+              <strong>Seja o primeiro a contribuir!</strong><br>
+              Instale a extensão EmotiSketch e comece a criar arte através dos seus movimentos do mouse.
+            </p>
+          </div>
+        `;
+        return;
+      }
+
+      const artworksHTML = artworks.map(artwork => `
+        <div class="artwork">
+          <div class="artwork-image">
+            <img src="${artwork.image}" alt="${artwork.title}" loading="lazy">
+          </div>
+          <div class="artwork-info">
+            <div class="artwork-title">${artwork.title}</div>
+            <div class="artwork-artist">por ${artwork.artist}</div>
+            <div class="artwork-date">${new Date(artwork.date).toLocaleDateString('pt-BR', {
+              year: 'numeric',
+              month: 'long',
+              day: 'numeric'
+            })}</div>
+            <div class="artwork-stats">${artwork.points.toLocaleString('pt-BR')} pontos de movimento</div>
+          </div>
+        </div>
+      `).join('');
+
+      galleryContent.innerHTML = artworksHTML;
+    }
+
+    // Simula carregamento
+    setTimeout(() => {
+      // Em produção, aqui você carregaria os dados reais do GitHub
+      // Por enquanto, mostra mensagem de galeria vazia
+      displayArtworks([]);
+    }, 1500);
+
+    // Função para adicionar nova obra (chamada pela extensão)
+    window.addArtwork = function(artwork) {
+      const galleryContent = document.getElementById('gallery-content');
+      const newArtworkHTML = `
+        <div class="artwork">
+          <div class="artwork-image">
+            <img src="${artwork.image}" alt="${artwork.title}" loading="lazy">
+          </div>
+          <div class="artwork-info">
+            <div class="artwork-title">${artwork.title}</div>
+            <div class="artwork-artist">por ${artwork.artist}</div>
+            <div class="artwork-date">${new Date(artwork.date).toLocaleDateString('pt-BR', {
+              year: 'numeric',
+              month: 'long',
+              day: 'numeric'
+            })}</div>
+            <div class="artwork-stats">${artwork.points.toLocaleString('pt-BR')} pontos de movimento</div>
+          </div>
+        </div>
+      `;
+      
+      // Remove mensagem de galeria vazia se existir
+      const noArtworks = galleryContent.querySelector('.no-artworks');
+      if (noArtworks) {
+        galleryContent.innerHTML = '';
+      }
+      
+      // Adiciona nova obra no topo
+      galleryContent.insertAdjacentHTML('afterbegin', newArtworkHTML);
+    };
+  </script>
+</body>
+</html>
