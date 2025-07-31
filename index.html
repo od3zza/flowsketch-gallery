@@ -3,373 +3,337 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>🎨 EmotiSketch Gallery</title>
-  <meta name="description" content="Arte Emocional Digital criada através dos movimentos do mouse">
-  <style>
+  <title>EmotiSketch</title>
+  <meta name="description" content="Don't burnout you art.">
+  
+<style>
     * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
     }
 
     body {
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-      min-height: 100vh;
-      padding: 20px;
-      line-height: 1.6;
+        font-family: 'Lato', sans-serif;
+        /* Fundo branco ou cinza muito claro */
+        background: #ffffff;
+        min-height: 100vh;
+        padding: 0px;
+        line-height: 1.6;
+        color: #333; /* Cor de texto principal, um cinza escuro */
     }
 
     .container {
-      max-width: 1200px;
-      margin: 0 auto;
-      background: rgba(255, 255, 255, 0.95);
-      border-radius: 20px;
-      padding: 40px;
-      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
-      backdrop-filter: blur(10px);
+        max-width: 1200px;
+        margin: 0 auto;
+        background: #ffffff; /* Fundo branco puro */
+        border-radius: 10px; /* Bordas um pouco mais suaves */
+        padding: 40px;
+        /* backdrop-filter: blur(10px); */ /* Removido para simplicidade e compatibilidade */
     }
 
     .header {
-      text-align: center;
-      margin-bottom: 50px;
+        text-align: center;
+        margin-bottom: 50px;
     }
 
     h1 {
-      font-size: 3.5em;
-      margin-bottom: 15px;
-      background: linear-gradient(45deg, #667eea, #764ba2);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      font-weight: 700;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 15px;
+        font-size: 3.5em;
+        margin-bottom: 15px;
+        /* Texto preto, sem gradiente */
+        color: #000000;
+        font-weight: 700;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 15px;
     }
 
     .subtitle {
-      font-size: 1.3em;
-      color: #667eea;
-      font-weight: 600;
-      margin-bottom: 20px;
+        font-size: 1.3em;
+        /* Subtítulo em cinza escuro */
+        color: #555;
+        font-weight: 600;
+        margin-bottom: 20px;
     }
 
     .description {
-      font-size: 1.1em;
-      color: #666;
-      max-width: 600px;
-      margin: 0 auto 30px;
+        font-size: 1.1em;
+        color: #666;
+        max-width: 600px;
+        margin: 0 auto 30px;
     }
 
     .stats {
-      display: flex;
-      justify-content: center;
-      gap: 20px;
-      margin-bottom: 40px;
-      flex-wrap: wrap;
+        display: flex;
+        justify-content: center;
+        gap: 20px;
+        margin-bottom: 40px;
+        flex-wrap: wrap;
     }
 
     .stat-item {
-      background: linear-gradient(45deg, #667eea, #764ba2);
-      color: white;
-      padding: 12px 20px;
-      border-radius: 25px;
-      font-weight: 600;
-      font-size: 0.9em;
-      box-shadow: 0 5px 15px rgba(102, 126, 234, 0.3);
-      transition: transform 0.3s ease;
+        /* Fundo branco com borda preta, ou cinza escuro com texto branco */
+        background: #333; /* Fundo cinza escuro */
+        color: white; /* Texto branco */
+        padding: 12px 20px;
+        border-radius: 25px;
+        font-weight: 600;
+        font-size: 0.9em;
+        box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1); /* Sombra mais suave */
+        transition: transform 0.3s ease;
     }
 
     .stat-item:hover {
-      transform: translateY(-2px);
+        transform: translateY(-2px);
+        background: #000; /* Fundo preto no hover */
     }
 
     /* SEÇÃO DE LOADING/VAZIA */
     .loading-section {
-      text-align: center;
-      padding: 60px 20px;
-      background: linear-gradient(45deg, #f8f9ff, #fff);
-      border-radius: 15px;
-      margin: 40px 0;
-      border: 2px dashed #667eea;
+        text-align: center;
+        padding: 60px 20px;
+        background: #f8f8f8; /* Fundo cinza claro */
+        border-radius: 10px;
+        margin: 40px 0;
+        border: 2px dashed #ccc; /* Borda dashed cinza */
     }
 
     .loading-section.hidden {
-      display: none;
+        display: none;
     }
 
     .loading-icon {
-      font-size: 4em;
-      margin-bottom: 20px;
-      opacity: 0.6;
+        font-size: 4em;
+        margin-bottom: 20px;
+        opacity: 0.5; /* Ícone mais sutil */
+        color: #555; /* Cor do ícone */
     }
 
     .loading-title {
-      font-size: 1.5em;
-      color: #667eea;
-      font-weight: 600;
-      margin-bottom: 15px;
+        font-size: 1.5em;
+        color: #333; /* Título em cinza escuro */
+        font-weight: 600;
+        margin-bottom: 15px;
     }
 
     .loading-text {
-      color: #888;
-      font-size: 1.1em;
-      margin-bottom: 10px;
+        color: #777; /* Texto em cinza médio */
+        font-size: 1.1em;
+        margin-bottom: 10px;
     }
 
     .cta-text {
-      background: #667eea;
-      color: white;
-      padding: 15px 25px;
-      border-radius: 10px;
-      display: inline-block;
-      margin-top: 20px;
-      font-weight: 600;
-      box-shadow: 0 5px 15px rgba(102, 126, 234, 0.3);
+        background: #000; /* Botão de CTA preto */
+        color: white;
+        padding: 15px 25px;
+        border-radius: 10px;
+        display: inline-block;
+        margin-top: 20px;
+        font-weight: 600;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2); /* Sombra mais forte para o botão */
+        transition: background 0.3s ease;
+    }
+
+    .cta-text:hover {
+        background: #333; /* Escurece um pouco no hover */
     }
 
     /* GALERIA DE OBRAS */
     .gallery {
-      display: none;
+        display: none;
     }
 
     .gallery.show {
-      display: block;
+        display: block;
     }
 
     .artwork {
-      margin-bottom: 80px;
-      background: #fff;
-      border-radius: 20px;
-      overflow: hidden;
-      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
+        margin-bottom: 80px;
+        background: #ffffff; /* Fundo branco */
+        border-radius: 15px;
+        overflow: hidden;
+        box-shadow: 0 15px 30px rgba(0, 0, 0, 0.08); /* Sombra mais suave */
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+
+        /* Adicione estas linhas para centralizar com Flexbox */
+        display: flex; /* Transforma o container em um container flexível */
+        justify-content: center; /* Centraliza horizontalmente os itens flex */
+        align-items: center; /* Centraliza verticalmente os itens flex */
+        flex-direction: column;
     }
 
     .artwork:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 25px 50px rgba(0, 0, 0, 0.15);
+        transform: translateY(-5px);
+        box-shadow: 0 25px 50px rgba(0, 0, 0, 0.12); /* Sombra mais pronunciada no hover */
     }
 
     .artwork-image-container {
-      width: 100%;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      background: #f8f9ff;
-      padding: 40px;
-      min-height: 400px;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background: #f5f5f5; /* Fundo cinza muito claro para a imagem */
+        padding: 40px;
+        min-height: 400px;
     }
 
     .artwork img {
-      max-width: 100%;
-      max-height: 600px;
-      width: auto;
-      height: auto;
-      border-radius: 10px;
-      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
-      object-fit: contain;
+        max-width: 100%;
+        max-height: 600px;
+        width: auto;
+        height: auto;
+        border-radius: 8px; /* Bordas um pouco mais suaves */
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1); /* Sombra da imagem */
+        object-fit: contain;
     }
 
     .artwork-info {
-      padding: 40px;
-      text-align: center;
-      background: linear-gradient(45deg, #fff, #f8f9ff);
+        padding: 40px;
+        text-align: center;
+        background: #ffffff; /* Fundo branco puro */
     }
 
     .artwork-title {
-      font-size: 2.2em;
-      font-weight: 700;
-      color: #333;
-      margin-bottom: 15px;
-      background: linear-gradient(45deg, #667eea, #764ba2);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
+        font-size: 2.2em;
+        font-weight: 700;
+        color: #333; /* Título em cinza escuro */
+        margin-bottom: 15px;
+        /* Removido gradiente, texto simples */
+        -webkit-background-clip: unset;
+        -webkit-text-fill-color: initial;
     }
 
     .artwork-artist {
-      font-size: 1.3em;
-      color: #667eea;
-      font-weight: 600;
-      margin-bottom: 15px;
+        font-size: 1.3em;
+        color: #555; /* Artista em cinza médio */
+        font-weight: 600;
+        margin-bottom: 15px;
     }
 
     .artwork-meta {
-      display: flex;
-      justify-content: center;
-      gap: 30px;
-      flex-wrap: wrap;
-      margin-top: 20px;
+        display: flex;
+        justify-content: center;
+        gap: 30px;
+        flex-wrap: wrap;
+        margin-top: 20px;
     }
 
     .meta-item {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      color: #888;
-      font-size: 0.95em;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        color: #888; /* Detalhes em cinza claro */
+        font-size: 0.95em;
     }
 
     .meta-item strong {
-      color: #555;
+        color: #555; /* Destaque em cinza médio */
     }
 
     /* FOOTER */
     .footer {
-      text-align: center;
-      margin-top: 60px;
-      padding-top: 40px;
-      border-top: 2px solid #f0f0f0;
-      color: #888;
+        text-align: center;
+        margin-top: 60px;
+        padding-top: 40px;
+        border-top: 1px solid #eee; /* Linha de borda mais suave */
+        color: #888;
     }
 
     .footer-link {
-      color: #667eea;
-      text-decoration: none;
-      font-weight: 600;
+        color: #555; /* Links em cinza médio */
+        text-decoration: none;
+        font-weight: 600;
     }
 
     .footer-link:hover {
-      text-decoration: underline;
+        text-decoration: underline;
+        color: #333; /* Escurece um pouco no hover */
     }
 
     /* RESPONSIVE */
     @media (max-width: 768px) {
-      .container {
-        padding: 25px;
-        margin: 10px;
-      }
-      
-      h1 {
-        font-size: 2.5em;
-        flex-direction: column;
-        gap: 10px;
-      }
-      
-      .subtitle {
-        font-size: 1.1em;
-      }
-      
-      .description {
-        font-size: 1em;
-      }
-      
-      .stats {
-        gap: 10px;
-      }
-      
-      .stat-item {
-        padding: 10px 15px;
-        font-size: 0.8em;
-      }
-      
-      .artwork-image-container {
-        padding: 20px;
-        min-height: 300px;
-      }
-      
-      .artwork-info {
-        padding: 25px;
-      }
-      
-      .artwork-title {
-        font-size: 1.8em;
-      }
-      
-      .artwork-meta {
-        flex-direction: column;
-        gap: 15px;
-      }
+        .container {
+            padding: 25px;
+            margin: 10px;
+        }
+        
+        h1 {
+            font-size: 2.5em;
+            flex-direction: column;
+            gap: 10px;
+        }
+        
+        .subtitle {
+            font-size: 1.1em;
+        }
+        
+        .description {
+            font-size: 1em;
+        }
+        
+        .stats {
+            gap: 10px;
+        }
+        
+        .stat-item {
+            padding: 10px 15px;
+            font-size: 0.8em;
+        }
+        
+        .artwork-image-container {
+            padding: 20px;
+            min-height: 300px;
+        }
+        
+        .artwork-info {
+            padding: 25px;
+        }
+        
+        .artwork-title {
+            font-size: 1.8em;
+        }
+        
+        .artwork-meta {
+            flex-direction: column;
+            gap: 15px;
+        }
     }
 
     @media (max-width: 480px) {
-      h1 {
-        font-size: 2em;
-      }
-      
-      .loading-section {
-        padding: 40px 15px;
-      }
-      
-      .loading-icon {
-        font-size: 3em;
-      }
-      
-      .cta-text {
-        padding: 12px 20px;
-        font-size: 0.9em;
-      }
+        h1 {
+            font-size: 2em;
+        }
+        
+        .loading-section {
+            padding: 40px 15px;
+        }
+        
+        .loading-icon {
+            font-size: 3em;
+        }
+        
+        .cta-text {
+            padding: 12px 20px;
+            font-size: 0.9em;
+        }
     }
-  </style>
+</style>
+  
 </head>
 <body>
   <div class="container">
     <!-- HEADER -->
     <div class="header">
       <h1>
-        🎨 
-        <span>EmotiSketch Gallery</span>
+        <span>EmotiSketch</span>
       </h1>
-      <div class="subtitle">Arte Emocional Digital</div>
+     <!-- <div class="subtitle">Arte Emocional Digital</div> -->
       <div class="description">
         Uma coleção única de arte criada através dos movimentos naturais do mouse durante a navegação.
-        Cada obra representa as emoções e sentimentos capturados em tempo real, transformando gestos
-        simples em expressões artísticas profundas.
-      </div>
-      
-      <div class="stats">
-        <div class="stat-item" id="totalArtworks">🖼️ 0 Obras</div>
-        <div class="stat-item" id="totalPoints">✨ 0 Pontos</div>
-        <div class="stat-item" id="lastUpdate">📅 Hoje</div>
       </div>
     </div>
-
-    <!-- SEÇÃO LOADING/VAZIA -->
-    <div class="loading-section" id="loadingSection">
-      <div class="loading-icon">🎨</div>
-      <div class="loading-title">Galeria em Construção</div>
-      <div class="loading-text">Esta galeria será preenchida automaticamente conforme os usuários da extensão EmotiSketch enviarem suas obras de arte emocional.</div>
-      <div class="loading-text">Seja o primeiro a contribuir!</div>
-      <div class="cta-text">
-        Instale a extensão EmotiSketch e comece a criar arte através dos seus movimentos do mouse.
-      </div>
-    </div>
-
-    <!-- GALERIA DE OBRAS -->
-    <div class="gallery" id="gallery">
-      <!-- As obras serão inseridas aqui dinamicamente -->
-      
-      <!-- EXEMPLO DE OBRA (remover quando tiver obras reais) -->
-      <div class="artwork">
-        <div class="artwork-image-container">
-          <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNkYPhfDwAChwGA60e6kgAAAABJRU5ErkJggg==" alt="My Story" id="sampleImage">
-        </div>
-        <div class="artwork-info">
-          <div class="artwork-title">My Story</div>
-          <div class="artwork-artist">por od3zza</div>
-          <div class="artwork-meta">
-            <div class="meta-item">
-              📅 <strong>31/07/2025</strong>
-            </div>
-            <div class="meta-item">
-              ✨ <strong>288 pontos de movimento</strong>
-            </div>
-            <div class="meta-item">
-              🎨 <strong>Arte Emocional</strong>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- FOOTER -->
-    <div class="footer">
-      <p>Criado com ❤️ pela extensão <a href="#" class="footer-link">EmotiSketch</a></p>
-      <p>Cada movimento conta uma história única</p>
-    </div>
-  </div>
-
+   
   <script>
     // Simulação de dados de arte (substitua pela integração real)
     const artworks = [
@@ -487,6 +451,13 @@
     <div class="artwork-artist">por od3zza</div>
     <div class="artwork-date">31/07/2025</div>
     <div class="artwork-stats">1664 pontos de movimento</div>
+  </div>
+    
+     <!-- FOOTER -->
+    <div class="footer">
+      <p>Criado com ❤️ pela extensão <a href="#" class="footer-link">EmotiSketch</a></p>
+      <p>Cada movimento conta uma história única</p>
+    </div>
   </div>
 </body>
 </html>
