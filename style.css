@@ -1,0 +1,200 @@
+/* Reset e Base */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Lato', sans-serif;
+    background: #ffffff;
+    min-height: 100vh;
+    padding: 0px;
+    line-height: 1.6;
+    color: #333;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Container Principal */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    background: #ffffff;
+    padding: 40px;
+    flex: 1; /* Permite que o container cresça e empurre o footer para baixo */
+}
+
+/* Header */
+.header {
+    text-align: center;
+    margin-bottom: 60px;
+}
+
+h1 {
+    font-size: 3.5em;
+    margin-bottom: 15px;
+    color: #000000;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+}
+
+.description {
+    font-size: 1.1em;
+    color: #666;
+    max-width: 600px;
+    margin: 0 auto 30px;
+}
+
+/* Galeria de Obras */
+.gallery {
+    display: block;
+    margin-bottom: 80px; /* Espaço antes do footer */
+}
+
+.artwork {
+    padding: 0; /* Remove padding interno */
+    margin-bottom: 80px; /* Espaçamento maior entre obras */
+    background: #ffffff;
+    /* Remove todas as sombras e bordas */
+    border-radius: 0;
+    overflow: visible;
+    box-shadow: none;
+    transition: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.artwork:hover {
+    transform: none; /* Remove animação hover */
+    box-shadow: none;
+}
+
+.artwork-image-container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #ffffff; /* Fundo branco puro */
+    padding: 0; /* Remove padding */
+    min-height: auto; /* Remove altura mínima */
+    margin-bottom: 20px;
+}
+
+.artwork img {
+    max-width: 100%;
+    max-height: 600px;
+    width: auto;
+    height: auto;
+    border-radius: 0; /* Remove bordas arredondadas */
+    box-shadow: none; /* Remove sombra da imagem */
+    object-fit: contain;
+    margin: 0; /* Remove margens da imagem */
+}
+
+.artwork-info {
+    padding: 0; /* Remove padding */
+    text-align: center;
+    background: #ffffff;
+    margin-top: 20px;
+}
+
+.artwork-title {
+    font-size: 2.2em;
+    font-weight: 700;
+    color: #333;
+    margin-bottom: 8px;
+}
+
+.artwork-artist {
+    font-size: 1.3em;
+    color: #555;
+    font-weight: 400; /* Peso mais leve */
+    margin-bottom: 8px;
+}
+
+.artwork-date {
+    font-size: 1em;
+    color: #888;
+    margin-bottom: 5px;
+}
+
+.artwork-stats {
+    font-size: 0.9em;
+    color: #aaa;
+}
+
+/* Estado Vazio */
+.gallery-empty {
+    text-align: center;
+    color: #888;
+    font-size: 1.2em;
+    padding: 60px 0;
+}
+
+/* Footer Fixo no Final */
+.footer {
+    text-align: center;
+    padding: 40px 0;
+    border-top: 1px solid #eee;
+    color: #888;
+    background: #ffffff;
+    margin-top: auto; /* Empurra o footer para o final */
+}
+
+.footer-link {
+    color: #555;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.footer-link:hover {
+    text-decoration: underline;
+    color: #333;
+}
+
+/* Responsive - Tablet */
+@media (max-width: 768px) {
+    .container {
+        padding: 25px;
+        margin: 10px;
+    }
+    
+    h1 {
+        font-size: 2.5em;
+        flex-direction: column;
+        gap: 10px;
+    }
+    
+    .description {
+        font-size: 1em;
+    }
+    
+    .artwork {
+        margin-bottom: 60px; /* Espaçamento menor em mobile */
+    }
+    
+    .artwork-title {
+        font-size: 1.8em;
+    }
+
+    .artwork-artist {
+        font-size: 1.1em;
+    }
+}
+
+/* Responsive - Mobile */
+@media (max-width: 480px) {
+    h1 {
+        font-size: 2em;
+    }
+    
+    .artwork {
+        margin-bottom: 50px;
+    }
+}
