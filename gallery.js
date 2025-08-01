@@ -83,19 +83,19 @@ function renderGallery() {
 
 // Função para carregar obras do images.js
 function loadImagesFromDatabase() {
-  if (typeof window.EmotiSketchImages === 'undefined') {
+  if (typeof window.FlowSketchImages === 'undefined') {
     console.error('❌ images.js It did not load! Please check if the file is included in the HTML.');
     return;
   }
   
-  console.log(`📂 Loading ${window.EmotiSketchImages.length} database works...`);
+  console.log(`📂 Loading ${window.FlowSketchImages.length} database works...`);
   
   // Limpa array atual
   artworks = [];
   
   // Carrega todas as obras do images.js
   // Já estão em ordem cronológica (mais recentes primeiro)
-  window.EmotiSketchImages.forEach(artwork => {
+  window.FlowSketchImages.forEach(artwork => {
     artworks.push({
       title: artwork.title,
       artist: artwork.artist,
@@ -126,7 +126,7 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 // API pública para extensão e integrações externas
-window.EmotiSketchGallery = {
+window.FlowSketchGallery = {
   // Adiciona nova obra programaticamente
   addArtwork: addArtwork,
   
@@ -155,7 +155,7 @@ window.EmotiSketchGallery = {
 };
 
 // Debug: expõe no console para facilitar testes
-window.EmotiSketchDebug = {
+window.FlowSketchDebug = {
   artworks: () => artworks,
   reloadImages: () => {
     // Força reload do images.js
