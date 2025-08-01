@@ -3,6 +3,14 @@
 
 window.EmotiSketchImages = [
   {
+    title: "ser� que vai?",
+    artist: "od3zza",
+    date: "2025-08-01T01:48:49.102Z",
+    points: 9500,
+    image: "images/artwork_1754012929102.png"
+  },
+
+  {
     title: "9try",
     artist: "od3zza", 
     date: "2025-07-31T12:00:00",
@@ -26,6 +34,6 @@ window.EmotiSketchImages = [
 ];
 
 // Versão do arquivo para controle de cache
-window.EmotiSketchImagesVersion = "1.0.0";
+window.EmotiSketchImagesVersion = "1754012931264";
 
 console.log(`📚 Images.js carregado - ${window.EmotiSketchImages.length} obras disponíveis (v${window.EmotiSketchImagesVersion})`);
