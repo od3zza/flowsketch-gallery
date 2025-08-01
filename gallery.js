@@ -1,4 +1,4 @@
-// script.js - Lógica principal da galeria EmotiSketch
+// script.js - Lógica principal da galeria FlowSketch
 // Agora carrega dados do images.js
 
 // Array para armazenar obras em memória (mais recentes primeiro)
@@ -30,9 +30,9 @@ function renderGallery() {
   if (artworks.length === 0) {
     gallery.innerHTML = `
       <div class="gallery-empty">
-        <h3>🎨 Galeria Vazia</h3>
-        <p>Seja o primeiro a contribuir com sua arte emocional!</p>
-        <p>Instale a extensão EmotiSketch e comece a criar.</p>
+        <h3>🎨 Empty Gallery</h3>
+        <p>Download and install the extension in your browser and start creating—or flowing :D</p>
+        
       </div>
     `;
     return;
@@ -41,7 +41,7 @@ function renderGallery() {
   // Limpa galeria
   gallery.innerHTML = '';
   
-  console.log(`🖼️ Renderizando ${artworks.length} obras...`);
+  console.log(`🖼️ Rendering ${artworks.length} works...`);
   
   // Renderiza cada obra (mais recentes primeiro)
   artworks.forEach((artwork, index) => {
@@ -60,7 +60,7 @@ function renderGallery() {
         <div class="artwork-title">${artwork.title}</div>
         <div class="artwork-artist">por ${artwork.artist}</div>
         <div class="artwork-date">${formatDate(artwork.date)}</div>
-        <div class="artwork-stats">${artwork.points.toLocaleString()} pontos de movimento</div>
+        <div class="artwork-stats">${artwork.points.toLocaleString()} Movement points</div>
       </div>
     `;
     
@@ -78,17 +78,17 @@ function renderGallery() {
     }, index * 100); // Delay escalonado
   });
   
-  console.log(`✅ Galeria renderizada com sucesso!`);
+  console.log(`✅ Gallery successfully rendered!`);
 }
 
 // Função para carregar obras do images.js
 function loadImagesFromDatabase() {
   if (typeof window.EmotiSketchImages === 'undefined') {
-    console.error('❌ images.js não foi carregado! Verifique se o arquivo está incluído no HTML.');
+    console.error('❌ images.js It did not load! Please check if the file is included in the HTML.');
     return;
   }
   
-  console.log(`📂 Carregando ${window.EmotiSketchImages.length} obras do banco de dados...`);
+  console.log(`📂 Loading ${window.EmotiSketchImages.length} database works...`);
   
   // Limpa array atual
   artworks = [];
@@ -105,19 +105,19 @@ function loadImagesFromDatabase() {
     });
   });
   
-  console.log(`✅ ${artworks.length} obras carregadas com sucesso!`);
+  console.log(`✅ ${artworks.length} works successfully uploaded!`);
   renderGallery();
 }
 
 // Função para recarregar dados (útil quando images.js é atualizado)
 function reloadGallery() {
-  console.log('🔄 Recarregando galeria...');
+  console.log('🔄 Reloading gallery...');
   loadImagesFromDatabase();
 }
 
 // Inicialização quando DOM estiver pronto
 document.addEventListener('DOMContentLoaded', function() {
-  console.log('🎨 EmotiSketch Gallery inicializando...');
+  console.log('🎨 FlowSketch Gallery starting up...');
   
   // Aguarda um pouco para garantir que images.js foi carregado
   setTimeout(() => {
@@ -170,4 +170,4 @@ window.EmotiSketchDebug = {
   }
 };
 
-console.log('📱 Script.js carregado! Use EmotiSketchGallery.* para interagir com a galeria.');
+console.log('📱 Script.js loaded! Use FlowSketchGallery.* to interact with the gallery.');

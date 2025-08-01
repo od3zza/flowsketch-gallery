@@ -1,9 +1,9 @@
-// images.js - Banco de dados das obras EmotiSketch
+// images.js - Banco de dados das obras FlowSketch
 // Este arquivo é atualizado automaticamente pela extensão
 
-window.EmotiSketchImages = [
+window.FlowSketchImages = [
   {
-    title: "ser� que vai?",
+    title: "será que vai?",
     artist: "od3zza",
     date: "2025-08-01T01:48:49.102Z",
     points: 9500,
@@ -34,6 +34,6 @@ window.EmotiSketchImages = [
 ];
 
 // Versão do arquivo para controle de cache
-window.EmotiSketchImagesVersion = "1754012931264";
+window.FlowSketchImagesVersion = "1754012931264";
 
-console.log(`📚 Images.js carregado - ${window.EmotiSketchImages.length} obras disponíveis (v${window.EmotiSketchImagesVersion})`);
+console.log(`📚 Images.js carregado - ${window.FlowSketchImages.length} obras disponíveis (v${window.FlowSketchImagesVersion})`);
