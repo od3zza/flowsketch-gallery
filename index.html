@@ -3,40 +3,44 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>EmotiSketch</title>
+  <title>EmotiSketch Gallery</title>
   <meta name="description" content="Don't burnout you art.">
-  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
   <div class="container">
     <!-- HEADER -->
     <div class="header">
       <h1>
-        <span>EmotiSketch</span>
+        <span>🎨 EmotiSketch</span>
       </h1>
       <div class="description">
         Uma coleção única de arte criada através dos movimentos naturais do mouse durante a navegação.
       </div>
     </div>
-
+    
     <!-- GALERIA DE OBRAS -->
     <div class="gallery" id="gallery">
-  <div class="artwork">
-    <img src="images/artwork_1753993377424.png" alt="10try">
-    <div class="artwork-title">10try</div>
-    <div class="artwork-artist">por od3zza</div>
-    <div class="artwork-date">31/07/2025</div>
-    <div class="artwork-stats">6529 pontos de movimento</div>
-  </div>
-      <!-- As obras serão inseridas aqui dinamicamente pelo JavaScript -->
+      <!-- As obras mais recentes aparecerão aqui primeiro -->
+      
+      <!-- Obra existente (será movida para baixo quando novas obras forem adicionadas) -->
+      <div class="artwork">
+        <img src="images/artwork_1753992909727.png" alt="9try">
+        <div class="artwork-title">9try</div>
+        <div class="artwork-artist">por od3zza</div>
+        <div class="artwork-date">31/07/2025</div>
+        <div class="artwork-stats">5729 pontos de movimento</div>
+      </div>
     </div>
   </div>
-
+  
   <!-- FOOTER SEMPRE NO FINAL -->
   <div class="footer">
     <p>Criado com ❤️ pela extensão <a href="#" class="footer-link">EmotiSketch</a></p>
     <p>Cada movimento conta uma história única</p>
   </div>
-
+  
   <!-- Scripts -->
-  <script src="gallery.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
