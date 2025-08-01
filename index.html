@@ -1,24 +1,94 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>FlowSketch Gallery</title>
-  <meta name="description" content="Don't burnout you art.">
+  <meta name="description" content="An experimental way to create with your eyes closed—or almost.">
   <link rel="stylesheet" href="styles.css">
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-B3VV388X4X"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-B3VV388X4X');
+</script>
+
+   <meta name="p:domain_verify" content="fd7d215910ea0cf1c785c7c7cf7a7c0f" />
+    <!-- End SSL Protocol Config -->
 </head>
+
+<!--
+          )      (\_
+         ((    _/{  "-;
+          )).-' {{ ;'`
+HEY U!   ( (  ;._ \\      -->
+
 <body>
+  <br />
+  <p style="text-align: center; margin: 0 auto; width: fit-content;">
+    <a href="https://letmeflowsketching.vercel.app/" style="font-size: 10px; text-decoration: none;">english</a> |
+    <a href="https://letmeflowsketching-vercel-app.translate.goog/?_x_tr_sl=en&_x_tr_tl=pt&_x_tr_hl=pt-BR&_x_tr_pto=wapp"
+      style="font-size: 10px; text-decoration: none;">português</a>
+  </p>
+
   <div class="container">
     <!-- HEADER -->
     <div class="header">
       <h1>
-        <span>🎨 FlowSketch</span>
+        <img
+          src="https://raw.githubusercontent.com/od3zza/flowsketch-gallery/refs/heads/main/images/flowsketch_logo_1.png"
+          style="max-height: 200px;">
       </h1>
-      <div class="description">
-        Uma coleção única de arte criada através dos movimentos naturais do mouse durante a navegação.
+
+      <!-- Menu -->
+      <p>
+        <center>
+          <a href="#" class="linkheader" data-modal="modal1">what</a> |
+          <a href="#" class="linkheader" data-modal="modal2">who</a>
+        </center>
+      </p>
+
+      <!-- Modals -->
+      <div id="modal1" class="modal">
+        <div class="modal-content">
+          <p>
+            <center>what</center><br />
+            <b>FlowSketch</b> is an unconscious creation experience created by <a
+              href="https://github.com/od3zza">od3zza</a>. Through a browser extension that tracks mouse movements and
+            clicks, FlowSketch enables the creation of unconscious art, which is formed over time by transforming user
+            movements into different intensities and sizes of shapes. Right clicks become lines, dots, shapes, and
+            distortions as random as the colors that are alternated with each left click. Today, we spend so much time
+            hyper-focused, hyper-active, hyper-confused, and overwhelmed online, that small moments of pleasure, like
+            painting or even resting our eyes and abstracting, disappear. Unconscious painting through this application
+            is not necessarily an art technique or method, but a curious exploration of what we can unconsciously build,
+            which uncovers so much of our behavior and emotions.<br/>
+            <br/>
+            Start creating, <a href="#">download the extension here</a>.<span class="close">&times;</span>
+          </p>
+
+        </div>
+      </div>
+
+      <div id="modal2" class="modal">
+        <div class="modal-content">
+          <p>
+            <center>who</center><br />
+            <b>od3zza</b>, also known as uoshi, is a multidisciplinary designer and filmmaker from Brazil.
+            From a very young age, od3zza has been deeply involved in the arts. Throughout their career, they've
+            experimented with various art forms, including painting, illustration, sculpture, tattooing, digital arts,
+            cinema, and more recently, game design. In their practice, you'll often find experimentation, hybridization,
+            and narratives that reflect themes of loss, solitude, and contemplation. <span class="close">&times;</span>
+          </p>
+        </div>
       </div>
     </div>
-    
+
+
     <!-- GALERIA DE OBRAS -->
     <div class="gallery" id="gallery">
       <!-- As obras serão carregadas automaticamente pelo script.js a partir do images.js -->
@@ -27,16 +97,47 @@
       </div>
     </div>
   </div>
-  
-  <!-- FOOTER SEMPRE NO FINAL -->
+
+  <!-- FOOTER 
   <div class="footer">
     <p>Criado com ❤️ pela extensão <a href="#" class="footer-link">FlowSketch</a></p>
     <p>Cada movimento conta uma história única</p>
-  </div>
-  
+  </div> -->
+
   <!-- Scripts -->
   <!-- IMPORTANTE: images.js deve vir ANTES do script.js -->
   <script src="images.js"></script>
   <script src="gallery.js"></script>
+  <script>
+    function openModal(modalId) {
+      document.getElementById(modalId).style.display = "block";
+    }
+
+    function closeModal(modalId) {
+      document.getElementById(modalId).style.display = "none";
+    }
+
+    document.querySelectorAll(".linkheader").forEach((link) => {
+      link.addEventListener("click", function (event) {
+        event.preventDefault();
+        const modalId = link.getAttribute("data-modal");
+        openModal(modalId);
+      });
+    });
+
+    document.querySelectorAll(".close").forEach((closeButton) => {
+      closeButton.addEventListener("click", function () {
+        const modal = closeButton.closest(".modal");
+        closeModal(modal.id);
+      });
+    });
+
+    window.onclick = function (event) {
+      if (event.target.classList.contains("modal")) {
+        closeModal(event.target.id);
+      }
+    };
+  </script>
 </body>
+
 </html>
