@@ -3,6 +3,14 @@
 
 window.FlowSketchImages = [
   {
+    title: "workaholic",
+    artist: "cau",
+    date: "2025-08-02T19:15:49.223Z",
+    points: 8571,
+    image: "images/artwork_1754162149224.png"
+  },
+
+  {
     title: "tesion0108",
     artist: "od3zza",
     date: "2025-08-01T17:12:06.690Z",
@@ -29,6 +37,6 @@ window.FlowSketchImages = [
 ];
 
 // Versão do arquivo para controle de cache
-window.FlowSketchImagesVersion = "1754068327973";
+window.FlowSketchImagesVersion = "1754162151330";
 
 console.log(`📚 Images.js carregado - ${window.FlowSketchImages.length} obras disponíveis (v${window.FlowSketchImagesVersion})`);
