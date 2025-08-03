@@ -1,3 +1,4 @@
+
 # FlowSketch
 
 **FlowSketch** is an unconscious creation experience created by **[od3zza](https://github.com/od3zza)**.
@@ -7,13 +8,15 @@
 >
 > Start creating, **[download the extension here](#)**
 
-🖱️ The extension tracks your mouse movements and clicks
-🎨 All the information collected is transformed into lines, dots, shapes, and colors on a canvas
-🖼️ You can view the canvas in real time by clicking on the extension button
-😃 Create abstract and unconscious art and share it in the public gallery
+- 🖱️ The extension tracks your mouse movements and clicks
+- 🎨 All the information collected is transformed into lines, dots, shapes, and colors on a canvas
+- 🖼️ You can view the canvas in real time by clicking on the extension button
+- 😃 Create abstract and unconscious art and share it in the public gallery
 
-How to use:
-👉 Install the extension.
-👉 Browse normally in your browser.
-👉 When you want, click on the extension button (you can pin it to your browser).
-👉 A pop-up will open showing the current status of your canvas.# FlowSketch
+👉 How to use:
+
+- Install the extension.
+- Browse normally in your browser.
+- When you want, click on the extension button (you can pin it to your browser).
+- A pop-up will open showing the current status of your canvas.# FlowSketch
+
