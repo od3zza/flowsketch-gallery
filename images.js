@@ -1,5 +1,5 @@
 // images.js - Banco de dados das obras FlowSketch
-// Este arquivo Ã© atualizado automaticamente pela extensÃ£o
+// Este arquivo é atualizado automaticamente pela extensão
 
 window.FlowSketchImages = [
   {
@@ -52,7 +52,7 @@ window.FlowSketchImages = [
 
 ];
 
-// VersÃ£o do arquivo para controle de cache
+// Versão do arquivo para controle de cache
 window.FlowSketchImagesVersion = "1755279221381";
 
-console.log(`ðŸ“š Images.js carregado - ${window.FlowSketchImages.length} obras disponÃ­veis (v${window.FlowSketchImagesVersion})`);
+console.log(`🖼️ Images.js carregado - ${window.FlowSketchImages.length} obras disponíveis (v${window.FlowSketchImagesVersion})`);
