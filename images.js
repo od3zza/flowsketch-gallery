@@ -11,23 +11,7 @@ window.FlowSketchImages = [
   },
 
   {
-    title: "trabaiané",
-    artist: "bahportela",
-    date: "2025-08-05T00:15:32.676Z",
-    points: 8395,
-    image: "images/artwork_1754352932676.png"
-  },
-
-  {
-    title: "workaholic",
-    artist: "cau",
-    date: "2025-08-02T19:15:49.223Z",
-    points: 8571,
-    image: "images/artwork_1754162149224.png"
-  },
-
-  {
-    title: "tesion0108",
+    title: "tesion",
     artist: "od3zza",
     date: "2025-08-01T17:12:06.690Z",
     points: 8131,
