@@ -2,15 +2,7 @@
 // Este arquivo é atualizado automaticamente pela extensão
 
 window.FlowSketchImages = [
-  {
-    title: "via2",
-    artist: "John",
-    date: "2025-08-31T21:20:05.975Z",
-    points: 72,
-    image: "images/artwork_1756675205975.png"
-  },
-
-  {
+ {
     title: "1508",
     artist: "od3zza",
     date: "2025-08-15T17:33:40.065Z",
