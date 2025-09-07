@@ -2,6 +2,14 @@
 // Este arquivo é atualizado automaticamente pela extensão
 
 window.FlowSketchImages = [
+  {
+    title: "Slow September Morning",
+    artist: "od3zza",
+    date: "2025-09-07T14:23:48.611Z",
+    points: 9800,
+    image: "images/artwork_1757255028611.png"
+  },
+
  {
     title: "1508",
     artist: "od3zza",
@@ -37,6 +45,6 @@ window.FlowSketchImages = [
 ];
 
 // Versão do arquivo para controle de cache
-window.FlowSketchImagesVersion = "1756675206969";
+window.FlowSketchImagesVersion = "1757255030113";
 
 console.log(`🖼️ Images.js carregado - ${window.FlowSketchImages.length} obras disponíveis (v${window.FlowSketchImagesVersion})`);
