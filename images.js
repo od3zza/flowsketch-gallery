@@ -3,6 +3,14 @@
 
 window.FlowSketchImages = [
   {
+    title: "Outubro?",
+    artist: "od3zza",
+    date: "2025-10-11T15:49:10.817Z",
+    points: 8526,
+    image: "images/artwork_1760197750817.png"
+  },
+
+  {
     title: "Slow September Morning",
     artist: "od3zza",
     date: "2025-09-07T14:23:48.611Z",
@@ -45,6 +53,6 @@ window.FlowSketchImages = [
 ];
 
 // Versão do arquivo para controle de cache
-window.FlowSketchImagesVersion = "1757255030113";
+window.FlowSketchImagesVersion = "1760197752531";
 
 console.log(`🖼️ Images.js carregado - ${window.FlowSketchImages.length} obras disponíveis (v${window.FlowSketchImagesVersion})`);
