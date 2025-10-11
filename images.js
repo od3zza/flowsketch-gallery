@@ -3,7 +3,7 @@
 
 window.FlowSketchImages = [
   {
-    title: "Outubro?",
+    title: "outubro?",
     artist: "od3zza",
     date: "2025-10-11T15:49:10.817Z",
     points: 8526,
@@ -11,7 +11,7 @@ window.FlowSketchImages = [
   },
 
   {
-    title: "Slow September Morning",
+    title: "slow september morning",
     artist: "od3zza",
     date: "2025-09-07T14:23:48.611Z",
     points: 9800,
