@@ -5,10 +5,13 @@
 let allArtworks = []; // Guarda TODAS as obras intactas
 let artworks = [];    // Guarda apenas as obras que estão sendo exibidas (filtradas)
 
-// Função para formatar data
 function formatDate(dateString) {
   const date = new Date(dateString);
-  return date.toLocaleDateString('pt-BR');
+  const month = String(date.getMonth() + 1).padStart(2, '0'); // Garante 2 dígitos
+  const day = String(date.getDate()).padStart(2, '0');       // Garante 2 dígitos
+  const year = date.getFullYear();
+  
+  return `${month}/${day}/${year}`;
 }
 
 // Função para adicionar nova obra programaticamente
