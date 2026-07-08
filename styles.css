@@ -7,11 +7,12 @@
 
 body {
     font-family: 'Lato', sans-serif;
+    font-size: 14px; /* Fonte padrão atualizada */
     background: #ffffff;
     min-height: 100vh;
     padding: 0px;
     line-height: 1.6;
-    color: #333;
+    color: #000000; /* Todo o texto padrão agora é preto */
     display: flex;
     flex-direction: column;
 }
@@ -22,7 +23,7 @@ body {
     margin: 0 auto;
     background: #ffffff;
     padding: 20px;
-    flex: 1; /* Permite que o container cresça e empurre o footer para baixo */
+    flex: 1;
 }
 
 /* Header */
@@ -32,7 +33,7 @@ body {
 }
 
 h1 {
-    font-size: 3.5em;
+    font-size: 3.5em; /* Mantido em 'em' para a logo escalar corretamente */
     margin-bottom: 15px;
     color: #000000;
     font-weight: 700;
@@ -43,20 +44,12 @@ h1 {
 }
 
 a {
-    color: #000000;
-}
-
-hr {
-  border: none;             
-  height: 2px;            
-  background-color: #000; 
-  width: 50%;           
-  margin: 2rem auto 2rem auto;     
+    color: #000000; /* Links pretos */
 }
 
 .description {
-    font-size: 1.1em;
-    color: #666;
+    font-size: 14px;
+    color: #000000; /* Descrição preta */
     max-width: 600px;
     margin: 0 auto 30px;
 }
@@ -64,14 +57,13 @@ hr {
 /* Galeria de Obras */
 .gallery {
     display: block;
-    margin-bottom: 80px; /* Espaço antes do footer */
+    margin-bottom: 80px;
 }
 
 .artwork {
-    padding: 0; /* Remove padding interno */
-    margin-bottom: 60px; /* Espaçamento maior entre obras */
+    padding: 0;
+    margin-bottom: 80px;
     background: #ffffff;
-    /* Remove todas as sombras e bordas */
     border-radius: 0;
     overflow: visible;
     box-shadow: none;
@@ -83,7 +75,7 @@ hr {
 }
 
 .artwork:hover {
-    transform: none; /* Remove animação hover */
+    transform: none;
     box-shadow: none;
 }
 
@@ -92,9 +84,9 @@ hr {
     display: flex;
     justify-content: center;
     align-items: center;
-    background: #ffffff; /* Fundo branco puro */
-    padding: 0; /* Remove padding */
-    min-height: auto; /* Remove altura mínima */
+    background: #ffffff;
+    padding: 0;
+    min-height: auto;
     margin-bottom: 12px;
 }
 
@@ -103,69 +95,71 @@ hr {
     max-height: 600px;
     width: auto;
     height: auto;
-    border-radius: 0; /* Remove bordas arredondadas */
-    box-shadow: none; /* Remove sombra da imagem */
+    border-radius: 0;
+    box-shadow: none;
     object-fit: contain;
-    margin: 0; /* Remove margens da imagem */
+    margin: 0;
 }
 
 .artwork-info {
-    padding: 0; /* Remove padding */
+    padding: 0;
     text-align: center;
     background: #ffffff;
-    margin-top: 0px;
+    margin-top: 20px;
 }
 
+/* Ajustes de Tipografia solicitados */
 .artwork-title {
-    font-size: 2em;
-    font-weight: bold;
-    color: #333;
+    font-size: 18px; 
+    font-weight: 700;
+    color: #000000; /* Título Preto */
     margin-bottom: 4px;
 }
 
 .artwork-artist {
-    font-size: 1.3em;
-    color: #555;
+    font-size: 14px;
+    color: #000000; /* Autoria Preta */
+    font-weight: 400;
     margin-bottom: 4px;
 }
 
 .artwork-date {
-    font-size: 0.9em;
-    color: #aaa;
+    font-size: 12px;
+    color: #888888; /* Mantido cinza */
+    margin-bottom: 2px;
 }
 
 .artwork-stats {
-    font-size: 0.9em;
-    color: #aaa;
+    font-size: 12px;
+    color: #888888; /* Mantido cinza */
 }
 
 /* Estado Vazio */
 .gallery-empty {
     text-align: center;
-    color: #888;
-    font-size: 1.2em;
+    color: #000000; /* Preto */
+    font-size: 14px;
     padding: 60px 0;
 }
 
-/* Footer Fixo no Final */
+/* Footer */
 .footer {
     text-align: center;
     padding: 40px 0;
     border-top: 1px solid #eee;
-    color: #888;
+    color: #000000; /* Preto */
     background: #ffffff;
-    margin-top: auto; /* Empurra o footer para o final */
+    margin-top: auto;
 }
 
 .footer-link {
-    color: #555;
+    color: #000000; /* Preto */
     text-decoration: none;
     font-weight: 600;
 }
 
 .footer-link:hover {
     text-decoration: underline;
-    color: #333;
 }
 
 /* Responsive - Tablet */
@@ -181,60 +175,10 @@ hr {
         gap: 10px;
     }
     
-    .description {
-        font-size: 1em;
-    }
-    
     .artwork {
-        margin-bottom: 60px; /* Espaçamento menor em mobile */
-    }
-    
-    .artwork-title {
-        font-size: 1.8em;
-    }
-
-    .artwork-artist {
-        font-size: 1.1em;
+        margin-bottom: 60px;
     }
 }
-
- .modal {
-      display: none;
-      position: fixed;
-      z-index: 1;
-      left: 0;
-      top: 0;
-      width: 100%;
-      height: 100%;
-      overflow: auto;
-      background-color: rgba(255, 255, 255, 0.8);
-    }
-
-    .modal-content {
-      background-color: hsl(0, 0%, 100%);
-      margin: 15% auto;
-      padding: 20px;
-      border: 1px solid #888;
-      width: 80%;
-      max-width: 600px;
-      color: hsl(0, 0%, 0%);
-      text-align: justify;
-      line-height: 1.6;
-    }
-
-    .close {
-      color: #aaa;
-      float: right;
-      font-size: 28px;
-      font-weight: bold;
-    }
-
-    .close:hover,
-    .close:focus {
-      color: #aaa6a6;
-      text-decoration: none;
-      cursor: pointer;
-    }
 
 /* Responsive - Mobile */
 @media (max-width: 480px) {
@@ -255,25 +199,76 @@ hr {
   gap: 6px;
   margin-top: 10px;
   margin-bottom: 30px;
+  font-family: 'Lato', sans-serif;
+}
+
+/* Texto descritivo "by" */
+.filter-label {
+  font-size: 14px;
+  color: #000000; /* Alterado para preto */
+  font-weight: 300;
 }
 
 /* O Dropdown Minimalista */
 .minimal-select {
+  font-family: 'Lato', sans-serif;
+  font-size: 14px;
+  font-weight: bold;
+  color: #000000;
   border: none;
   background: transparent;
   padding: 2px 24px 2px 4px;
   cursor: pointer;
   outline: none;
-  border-bottom: 1px solid #000; /* Linha fina preta abaixo do nome */
-  appearance: none; /* Remove a seta padrão chata do navegador */
+  border-bottom: 1px solid #000000;
+  appearance: none;
   -webkit-appearance: none;
-  
-  /* Adiciona uma seta minimalista customizada usando SVG em background */
   background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='10' height='10' viewBox='0 0 10 10'><path d='M0 3l5 5 5-5z' fill='%23000000'/></svg>");
   background-repeat: no-repeat;
   background-position: right 6px center;
 }
 
 .minimal-select:focus {
-  border-bottom: 1px solid #000; /* Destaca levemente ao clicar */
+  border-bottom: 2px solid #000000;
+}
+
+/* =========================================
+   MODAL - MANTIDO EXATAMENTE COMO ESTAVA
+   ========================================= */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(255, 255, 255, 0.8);
+}
+
+.modal-content {
+  background-color: hsl(0, 0%, 100%);
+  margin: 15% auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 80%;
+  max-width: 600px;
+  color: hsl(0, 0%, 0%);
+  text-align: justify;
+  line-height: 1.6;
+}
+
+.close {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: #aaa6a6;
+  text-decoration: none;
+  cursor: pointer;
 }
