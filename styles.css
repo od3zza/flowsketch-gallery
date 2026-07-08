@@ -240,3 +240,46 @@ a {
         margin-bottom: 50px;
     }
 }
+
+/* Container do Filtro */
+.filter-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  margin-top: 10px;
+  margin-bottom: 30px;
+  font-family: 'Lato', sans-serif;
+}
+
+/* Texto descritivo "by" */
+.filter-label {
+  font-size: 1.1em;
+  color: #888; /* Tom cinza suave */
+  font-weight: 300;
+}
+
+/* O Dropdown Minimalista */
+.minimal-select {
+  font-family: 'Lato', sans-serif;
+  font-size: 1.1em;
+  font-weight: bold;
+  color: #000;
+  border: none;
+  background: transparent;
+  padding: 2px 24px 2px 4px;
+  cursor: pointer;
+  outline: none;
+  border-bottom: 1px solid #000; /* Linha fina preta abaixo do nome */
+  appearance: none; /* Remove a seta padrão chata do navegador */
+  -webkit-appearance: none;
+  
+  /* Adiciona uma seta minimalista customizada usando SVG em background */
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='10' height='10' viewBox='0 0 10 10'><path d='M0 3l5 5 5-5z' fill='%23000000'/></svg>");
+  background-repeat: no-repeat;
+  background-position: right 6px center;
+}
+
+.minimal-select:focus {
+  border-bottom: 2px solid #000; /* Destaca levemente ao clicar */
+}
