@@ -1,8 +1,9 @@
-// script.js - Lógica principal da galeria FlowSketch
-// Agora carrega dados do images.js
+// gallery.js - Lógica principal da galeria FlowSketch
+// Agora carrega dados do images.js e possui sistema de filtros
 
-// Array para armazenar obras em memória (mais recentes primeiro)
-let artworks = [];
+// Arrays para armazenar obras em memória
+let allArtworks = []; // Guarda TODAS as obras intactas
+let artworks = [];    // Guarda apenas as obras que estão sendo exibidas (filtradas)
 
 // Função para formatar data
 function formatDate(dateString) {
@@ -10,12 +11,18 @@ function formatDate(dateString) {
   return date.toLocaleDateString('pt-BR');
 }
 
-// Função para adicionar nova obra
+// Função para adicionar nova obra programaticamente
 function addArtwork(artworkData) {
-  // Adiciona no INÍCIO do array (mais recentes primeiro)
-  artworks.unshift(artworkData);
+  allArtworks.unshift(artworkData);
+  
+  // Verifica se a obra atual se encaixa no filtro selecionado
+  const currentFilter = document.getElementById('authorFilter')?.value || 'all';
+  if (currentFilter === 'all' || currentFilter === artworkData.artist.trim()) {
+    artworks.unshift(artworkData);
+    renderGallery();
+  }
+  
   console.log(`✅ Nova obra adicionada: "${artworkData.title}" por ${artworkData.artist}`);
-  renderGallery();
 }
 
 // Função para renderizar galeria
@@ -31,8 +38,7 @@ function renderGallery() {
     gallery.innerHTML = `
       <div class="gallery-empty">
         <h3>🎨 Empty Gallery</h3>
-        <p>Download and install the extension in your browser and start creating—or flowing :D</p>
-        
+        <p>No artworks found for this selection. Flow some more!</p>
       </div>
     `;
     return;
@@ -40,7 +46,6 @@ function renderGallery() {
   
   // Limpa galeria
   gallery.innerHTML = '';
-  
   console.log(`🖼️ Rendering ${artworks.length} works...`);
   
   // Renderiza cada obra (mais recentes primeiro)
@@ -75,41 +80,66 @@ function renderGallery() {
       artworkElement.style.transition = 'all 0.5s ease';
       artworkElement.style.opacity = '1';
       artworkElement.style.transform = 'translateY(0)';
-    }, index * 100); // Delay escalonado
+    }, index * 100);
   });
   
   console.log(`✅ Gallery successfully rendered!`);
 }
 
+// Configura o filtro de autores dinamicamente
+function setupFilter() {
+  const filterSelect = document.getElementById('authorFilter');
+  if (!filterSelect) return;
+
+  // Extrai nomes únicos e coloca em ordem alfabética
+  const uniqueArtists = [...new Set(allArtworks.map(art => art.artist.trim()))]
+    .sort((a, b) => a.toLowerCase().localeCompare(b.toLowerCase()));
+
+  // Reseta as opções mantendo apenas o "everyone"
+  filterSelect.innerHTML = '<option value="all">everyone</option>';
+
+  // Preenche o dropdown com os artistas encontrados no images.js
+  uniqueArtists.forEach(artist => {
+    const option = document.createElement('option');
+    option.value = artist;
+    option.textContent = artist.toLowerCase();
+    filterSelect.appendChild(option);
+  });
+
+  // Lógica de filtragem ao trocar a opção
+  filterSelect.addEventListener('change', (e) => {
+    const selectedAuthor = e.target.value;
+
+    if (selectedAuthor === 'all') {
+      artworks = [...allArtworks]; // Mostra tudo
+    } else {
+      artworks = allArtworks.filter(art => art.artist.trim() === selectedAuthor); // Filtra
+    }
+
+    renderGallery();
+  });
+}
+
 // Função para carregar obras do images.js
 function loadImagesFromDatabase() {
   if (typeof window.FlowSketchImages === 'undefined') {
-    console.error('❌ images.js It did not load! Please check if the file is included in the HTML.');
+    console.error('❌ images.js did not load! Please check if the file is included in the HTML.');
     return;
   }
   
   console.log(`📂 Loading ${window.FlowSketchImages.length} database works...`);
   
-  // Limpa array atual
-  artworks = [];
-  
-  // Carrega todas as obras do images.js
-  // Já estão em ordem cronológica (mais recentes primeiro)
-  window.FlowSketchImages.forEach(artwork => {
-    artworks.push({
-      title: artwork.title,
-      artist: artwork.artist,
-      date: artwork.date,
-      points: artwork.points,
-      image: artwork.image
-    });
-  });
+  // Clona o array original para a memória
+  allArtworks = window.FlowSketchImages.map(artwork => ({...artwork}));
+  artworks = [...allArtworks]; // Inicia mostrando tudo
   
   console.log(`✅ ${artworks.length} works successfully uploaded!`);
+  
+  setupFilter(); // Inicia o filtro após carregar os dados
   renderGallery();
 }
 
-// Função para recarregar dados (útil quando images.js é atualizado)
+// Função para recarregar dados
 function reloadGallery() {
   console.log('🔄 Reloading gallery...');
   loadImagesFromDatabase();
@@ -118,8 +148,6 @@ function reloadGallery() {
 // Inicialização quando DOM estiver pronto
 document.addEventListener('DOMContentLoaded', function() {
   console.log('🎨 FlowSketch Gallery starting up...');
-  
-  // Aguarda um pouco para garantir que images.js foi carregado
   setTimeout(() => {
     loadImagesFromDatabase();
   }, 100);
@@ -127,38 +155,26 @@ document.addEventListener('DOMContentLoaded', function() {
 
 // API pública para extensão e integrações externas
 window.FlowSketchGallery = {
-  // Adiciona nova obra programaticamente
   addArtwork: addArtwork,
-  
-  // Obtém todas as obras carregadas
-  getArtworks: () => [...artworks], // Retorna cópia do array
-  
-  // Re-renderiza galeria
+  getArtworks: () => [...allArtworks],
   renderGallery: renderGallery,
-  
-  // Recarrega do banco de dados
   reloadGallery: reloadGallery,
-  
-  // Limpa galeria (apenas visual)
   clearGallery: () => {
     artworks = [];
     renderGallery();
   },
-  
-  // Estatísticas
   getStats: () => ({
-    total: artworks.length,
-    totalPoints: artworks.reduce((sum, art) => sum + art.points, 0),
-    artists: [...new Set(artworks.map(art => art.artist))].length,
-    latestDate: artworks.length > 0 ? artworks[0].date : null
+    total: allArtworks.length,
+    totalPoints: allArtworks.reduce((sum, art) => sum + art.points, 0),
+    artists: [...new Set(allArtworks.map(art => art.artist))].length,
+    latestDate: allArtworks.length > 0 ? allArtworks[0].date : null
   })
 };
 
-// Debug: expõe no console para facilitar testes
+// Debug
 window.FlowSketchDebug = {
-  artworks: () => artworks,
+  artworks: () => allArtworks,
   reloadImages: () => {
-    // Força reload do images.js
     const script = document.createElement('script');
     script.src = 'images.js?v=' + Date.now();
     document.head.appendChild(script);
@@ -169,5 +185,3 @@ window.FlowSketchDebug = {
     };
   }
 };
-
-console.log('📱 Script.js loaded! Use FlowSketchGallery.* to interact with the gallery.');
