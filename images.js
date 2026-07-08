@@ -3,6 +3,14 @@
 
 window.FlowSketchImages = [
   {
+    title: "teste",
+    artist: "dw",
+    date: "2026-07-08T23:28:53.965Z",
+    points: 96,
+    image: "images/artwork_1783553336083.png"
+  },
+
+  {
     title: "granola",
     artist: "od3zza",
     date: "2026-07-08T22:56:41.350Z",
