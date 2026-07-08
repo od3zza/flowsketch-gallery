@@ -275,5 +275,5 @@ hr {
 }
 
 .minimal-select:focus {
-  border-bottom: 2px solid #000; /* Destaca levemente ao clicar */
+  border-bottom: 1px solid #000; /* Destaca levemente ao clicar */
 }
