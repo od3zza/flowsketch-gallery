@@ -3,6 +3,14 @@
 
 window.FlowSketchImages = [
   {
+    title: "up",
+    artist: "od3zza",
+    date: "2026-07-08T22:07:02.982Z",
+    points: 1365,
+    image: "images/artwork_1783548422982.png"
+  },
+
+  {
     title: "Sansao",
     artist: "od3zza",
     date: "2026-01-29T19:48:35.088Z",
@@ -77,6 +85,6 @@ window.FlowSketchImages = [
 ];
 
 // Versão do arquivo para controle de cache
-window.FlowSketchImagesVersion = "1769716117149";
+window.FlowSketchImagesVersion = "1783548424576";
 
 console.log(`🖼️ Images.js carregado - ${window.FlowSketchImages.length} obras disponíveis (v${window.FlowSketchImagesVersion})`);
