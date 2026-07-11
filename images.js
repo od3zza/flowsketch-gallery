@@ -3,6 +3,14 @@
 
 window.FlowSketchImages = [
   {
+    title: "ceramus gameplay",
+    artist: "hals",
+    date: "2026-07-11T00:47:59.730Z",
+    points: 9461,
+    image: "images/artwork_1783730880727.png"
+  },
+
+  {
     title: "0710",
     artist: "od3zza",
     date: "2026-07-11T00:04:51.305Z",
