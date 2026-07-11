@@ -3,8 +3,8 @@
 
 window.FlowSketchImages = [
   {
-    title: "hals",
-    artist: "late night work",
+    title: "late night work",
+    artist: "hals",
     date: "2026-07-11T02:57:54.788Z",
     points: 9400,
     image: "images/artwork_1783738676068.png"
